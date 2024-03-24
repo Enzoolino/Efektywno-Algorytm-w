@@ -1,4 +1,6 @@
 ﻿
+namespace EfektywnoscAlgorytmow
+{
     public class Generators
     {
         public static int[] GenerateRandom(int size, int minVal, int maxVal)
@@ -82,8 +84,8 @@
 
             return a;
         }
-        
-    
     }
+}
+    
 
 
