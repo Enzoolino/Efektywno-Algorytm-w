@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Efektywność Algorytmów", "Efektywność Algorytmów\Efektywność Algorytmów.csproj", "{9804EFFE-721F-4EB8-8610-EFF46A9B78F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfektywnoscAlgorytmow", "EfektywnoscAlgorytmow\EfektywnoscAlgorytmow.csproj", "{9804EFFE-721F-4EB8-8610-EFF46A9B78F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
