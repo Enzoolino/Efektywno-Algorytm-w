@@ -9,6 +9,44 @@ namespace EfektywnoscAlgorytmow
         
         [Params(10, 1000, 100000)]
         public int Size { get; set; }
+
+        public enum DataGenerationType
+        {
+            Random,
+            Sorted,
+            Reversed,
+            AlmostSorted,
+            FewUnique
+        }
+        
+        [Params(DataGenerationType.Random, DataGenerationType.Sorted, DataGenerationType.Reversed, DataGenerationType.AlmostSorted, DataGenerationType.FewUnique)]
+        public DataGenerationType DataType { get; set; }
+        
+        private int[] GenerateArray(DataGenerationType type)
+        {
+            switch (type)
+            {
+                case DataGenerationType.Random:
+                    return Generators.GenerateRandom(Size, 0, 2147483647);
+                case DataGenerationType.Sorted:
+                    return Generators.GenerateSorted(Size, 0, 2147483647);
+                case DataGenerationType.Reversed:
+                    return Generators.GenerateReversed(Size, 0, 2147483647);
+                case DataGenerationType.AlmostSorted:
+                    return Generators.GenerateAlmostSorted(Size, 0, 2147483647, 0.05);
+                case DataGenerationType.FewUnique:
+                    return Generators.GenerateFewUnique(Size, 0, 2147483647);
+                default:
+                    throw new ArgumentException("Invalid data generation type");
+            }
+        }
+
+        [Benchmark]
+        public void InsertionSort()
+        {
+            int[] arr = GenerateArray(DataType);
+            InsertionSort(arr);
+        }
         
         public void InsertionSort(int[] arr)
         {
@@ -32,7 +70,7 @@ namespace EfektywnoscAlgorytmow
         [Benchmark]
         public void MergeSort()
         {
-            int[] arr = Generators.GenerateRandom(Size, 0, 2147483647);
+            int[] arr = GenerateArray(DataType);
             MergeSort(arr);
         }
         
@@ -124,6 +162,13 @@ namespace EfektywnoscAlgorytmow
                 k++;
             }
         }
+
+        [Benchmark]
+        public void QuickSortClassic()
+        {
+            int[] arr = GenerateArray(DataType);
+            QuickSortClassic(arr);
+        }
         
         public void QuickSortClassic(int[] arr)
         {
@@ -148,7 +193,7 @@ namespace EfektywnoscAlgorytmow
 
             int i = low - 1;
 
-            for (int j = low; j < high; j++)
+            for (int j = low; j <= high - 1; j++)
             {
                 if (arr[j] <= pivot)
                 {
@@ -160,6 +205,14 @@ namespace EfektywnoscAlgorytmow
             (arr[i + 1], arr[high]) = (arr[high], arr[i + 1]);
 
             return i + 1;
+        }
+
+
+        [Benchmark]
+        public void QuickSort()
+        {
+            int[] arr = GenerateArray(DataType);
+            QuickSort(arr);
         }
         
         public void QuickSort(int[] arr)

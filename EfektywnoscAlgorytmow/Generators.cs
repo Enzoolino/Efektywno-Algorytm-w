@@ -48,40 +48,9 @@ namespace EfektywnoscAlgorytmow
             return a;
         }
 
-        public static int[] GenerateFewUnique(int size, int minVal, int maxVal, int uniqueCount)
+        public static int[] GenerateFewUnique(int size, int minVal, int maxVal)
         {
-            Random random = new Random();
-            int[] a = new int[size];
-            
-            for (int i = 0; i < size; i++)
-            {
-                a[i] = random.Next(minVal, maxVal + 1);
-            }
-            
-            HashSet<int> uniqueValues = new HashSet<int>();
-            while (uniqueValues.Count < uniqueCount)
-            {
-                uniqueValues.Add(random.Next(minVal, maxVal + 1));
-            }
-            
-            foreach (int uniqueValue in uniqueValues)
-            {
-                int index;
-                do
-                {
-                    index = random.Next(0, size);
-                } while (a[index] != 0);
-                a[index] = uniqueValue;
-            }
-            
-            for (int i = 0; i < size; i++)
-            {
-                if (a[i] == 0)
-                {
-                    a[i] = random.Next(minVal, maxVal + 1);
-                }
-            }
-
+            int[] a = GenerateSorted(size, 0, Math.Max(2, size / 10));
             return a;
         }
     }
