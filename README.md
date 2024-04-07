@@ -1,8 +1,8 @@
 ## Task:
 Zbadaj empirycznie (doświadczalnie) efektywność 3 klasycznych algorytmów sortowania:
 
-InsertionSort (zaimplementuj: https://www.geeksforgeeks.org/insertion-sort/)
-MergeSort (zaimplementuj: https://www.geeksforgeeks.org/merge-sort/)
+InsertionSort (zaimplementuj: https://www.geeksforgeeks.org/insertion-sort/)<br />
+MergeSort (zaimplementuj: https://www.geeksforgeeks.org/merge-sort/)<br />
 QuickSortClassical klasyczny (zaimplementuj: https://www.geeksforgeeks.org/quick-sort)
 QuickSort (wariant heurystyczny, zaimplementowany w bibliotekach C# - Array.Sort())
 Przyjmij, że sortowane rosnąco będą tablice liczb całkowitych (typ int) spełniające następujące kryteria:
